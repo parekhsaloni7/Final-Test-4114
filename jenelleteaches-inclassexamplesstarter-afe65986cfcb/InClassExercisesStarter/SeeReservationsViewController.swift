@@ -46,10 +46,11 @@ class SeeReservationsViewController: UIViewController {
                 for x in (querySnapshot?.documents)! {
                     let content = x.data();
                     
-                    let name = content["name"] as! String
-                    let dept = content["dept"] as! String
+                    let username = content["username"] as! String
+                    let days = content["days"] as! String
+                    let numSeats = content["numSeats"] as! String
                     
-                    self.textField.text = self.textField.text + "Reservations for: \(username), Days: \(days)\n"
+                    self.textField.text = self.textField.text + "Reservations for: \(username), Days: \(days)\n, Number of Seats: \(numSeats)\n"
                     
                 }
             }

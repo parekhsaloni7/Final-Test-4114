@@ -45,13 +45,13 @@ class MenuTableViewController: UITableViewController {
         
         print("Person clicked in row number: \(i)")
         if (i == 0) {
-            performSegue(withIdentifier: "restaurantmap", sender: nil)
+            performSegue(withIdentifier: "segueMap", sender: nil)
         }
         if (i == 1) {
             performSegue(withIdentifier: "segueMakeReservation", sender: nil)
         }
         if (i == 2) {
-            performSegue(withIdentifier: "segueshowreservation", sender: nil)
+            performSegue(withIdentifier: "segueshowReservation", sender: nil)
         }
     }
 
