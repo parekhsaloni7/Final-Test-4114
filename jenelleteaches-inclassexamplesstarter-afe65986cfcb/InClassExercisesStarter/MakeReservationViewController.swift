@@ -53,28 +53,23 @@ class MakeReservationViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: Any) {
         print("pressed the button")
         
-        let username = nameTextField.text!
-        let day = dayTextField.text!
-        let numSeats = seatsTextField.text!
-        // monitor the database for any incoming changes
-        db.collection("reservation").addSnapshotListener {
-            (querySnapshot, error) in
-            
-            if (querySnapshot == nil) {
-                print("Error fetching document: \(error!)")
-                return
-            }
+        db.collection("reservation").document().setData([
+            "username": "Jenelle",
+            "restaurant": nameTextField.text,
+            "day": dayTextField.text,
+            "numSeats":seatsTextField.text
+            ])            }
             
             // UI: Clear the textbox
             //self.messagesTextBox.text = ""
             
             // Get only what is changed:
-            querySnapshot?.documentChanges.forEach({
-                (diff) in
+       //     querySnapshot?.documentChanges.forEach({
+       //         (diff) in
                 
-                if (diff.type == DocumentChangeType.added) {
+         //       if (diff.type == DocumentChangeType.added) {
                     // something was added
-                    let data = diff.document.data()     // get the document that was added
+          //          let data = diff.document.data()     // get the document that was added
                     //let user = data["username"] as! String
                //     let msg = data["message"] as! String
                    // print(user)
@@ -83,7 +78,7 @@ class MakeReservationViewController: UIViewController {
                    // self.messagesTextBox.text = self.messagesTextBox.text + "\(user): \(msg) \n"
                 }
                 
-    }
+
     
     
     
@@ -98,6 +93,4 @@ class MakeReservationViewController: UIViewController {
     }
     */
 
-)}
-}
-}
+

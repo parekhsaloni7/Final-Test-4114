@@ -35,7 +35,10 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = "Put restaurant name here"
+    
+        print(items[indexPath.row])
+        // 4. Change the text on the table cell
+        cell.textLabel?.text = items[indexPath.row]
         return cell
     }
     

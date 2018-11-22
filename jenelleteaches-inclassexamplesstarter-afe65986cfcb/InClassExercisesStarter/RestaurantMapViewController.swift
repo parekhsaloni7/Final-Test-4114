@@ -60,15 +60,15 @@ class RestaurantMapViewController: UIViewController,CLLocationManagerDelegate,MK
                     print(json)
                     
                     // Get the dog photo url
-                    let p = json["message"].string!
-                    print(p)
+                   // let p = json["message"].string!
+                    //print(p)
                     
                     // Show the photo url in the user interface
                    // self.infoLabel.text = p
                     
                     // Code to put the photo into an ImageView
-                    let url = URL(string: p)
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                  //  let url = URL(string: x)
+                 //   let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                  //   self.mapView.image = UIImage(data: data!)
                     
                     
