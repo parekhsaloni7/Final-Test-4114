@@ -29,6 +29,34 @@ class SeeReservationsViewController: UIViewController {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        
+        textField.text = ""
+        
+        let results =  db.collection("reservations").whereField("username", isEqualTo: "jenelle@gmail.com")
+        results.getDocuments {
+            (querySnapshot, error) in
+            
+            
+            if (error != nil) {
+                print("Error!")
+                print(error?.localizedDescription)
+            }
+            else {
+                
+                for x in (querySnapshot?.documents)! {
+                    let content = x.data();
+                    
+                    let name = content["name"] as! String
+                    let dept = content["dept"] as! String
+                    
+                    self.textField.text = self.textField.text + "Reservations for: \(username), Days: \(days)\n"
+                    
+                }
+            }
+            
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
-
+import FirebaseAuth
 
 class MakeReservationViewController: UIViewController {
 
@@ -30,6 +30,17 @@ class MakeReservationViewController: UIViewController {
         let settings = db.settings
         settings.areTimestampsInSnapshotsEnabled = true
         db.settings = settings
+        
+        let currentUser = Auth.auth().currentUser;
+        if (currentUser != nil) {
+            print("We have a user!")
+            print("User id: \(currentUser?.uid)")
+            print("Email: \(currentUser?.email)")
+        }
+        else {
+            print("no user is signed in.")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +52,37 @@ class MakeReservationViewController: UIViewController {
     // MARK: Actions
     @IBAction func buttonPressed(_ sender: Any) {
         print("pressed the button")
+        
+        let username = nameTextField.text!
+        let day = dayTextField.text!
+        let numSeats = seatsTextField.text!
+        // monitor the database for any incoming changes
+        db.collection("reservation").addSnapshotListener {
+            (querySnapshot, error) in
+            
+            if (querySnapshot == nil) {
+                print("Error fetching document: \(error!)")
+                return
+            }
+            
+            // UI: Clear the textbox
+            //self.messagesTextBox.text = ""
+            
+            // Get only what is changed:
+            querySnapshot?.documentChanges.forEach({
+                (diff) in
+                
+                if (diff.type == DocumentChangeType.added) {
+                    // something was added
+                    let data = diff.document.data()     // get the document that was added
+                    //let user = data["username"] as! String
+               //     let msg = data["message"] as! String
+                   // print(user)
+                 //   print(msg)
+                    
+                   // self.messagesTextBox.text = self.messagesTextBox.text + "\(user): \(msg) \n"
+                }
+                
     }
     
     
@@ -56,4 +98,6 @@ class MakeReservationViewController: UIViewController {
     }
     */
 
+)}
+}
 }
