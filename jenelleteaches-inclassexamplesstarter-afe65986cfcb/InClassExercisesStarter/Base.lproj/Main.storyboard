@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q5P-2D-QqU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4iy-S6-tvY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -199,7 +199,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="c4E-81-OKl"/>
                     <connections>
-                        <segue destination="irl-Fk-UKc" kind="show" identifier="segueLoginSignup" id="D1g-58-9Kn"/>
+                        <outlet property="messagelabel" destination="ufh-rV-Yoh" id="loZ-mk-rpj"/>
+                        <outlet property="passwordtextbox" destination="XWN-mG-Ba1" id="vNT-bq-6Li"/>
+                        <outlet property="useremailtextbox" destination="JYu-QG-jE5" id="FFz-Xn-gUw"/>
+                        <segue destination="irl-Fk-UKc" kind="show" identifier="segueLoginSignUp" id="D1g-58-9Kn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwE-AQ-hxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,11 +225,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="q5P-2D-QqU" kind="show" identifier="restaurantmap" id="yOF-ob-EU2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="irl-Fk-UKc" id="EcG-kJ-VyG"/>
-                            <outlet property="delegate" destination="irl-Fk-UKc" id="Fkl-TK-j2O"/>
+                            <outlet property="dataSource" destination="irl-Fk-UKc" id="e6T-w8-Cgl"/>
+                            <outlet property="delegate" destination="irl-Fk-UKc" id="OVj-k6-JAB"/>
                         </connections>
                     </tableView>
                     <connections>
@@ -245,13 +251,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Reservations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMf-Pp-FIN">
-                                <rect key="frame" x="118" y="34" width="138" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Your reservations go here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Po7-Kg-vC7">
                                 <rect key="frame" x="16" y="96" width="343" height="542"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -259,6 +258,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Reservations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMf-Pp-FIN">
+                                <rect key="frame" x="36" y="52" width="138" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="o1Z-JH-uzv"/>
@@ -269,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIm-ee-dpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047" y="4584"/>
+            <point key="canvasLocation" x="1065" y="4350"/>
         </scene>
         <!--Make A Reservation-->
         <scene sceneID="z5Z-JE-WjR">
